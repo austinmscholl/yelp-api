@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class SearchService {
   constructor(private http: HttpClient) {
    }
 
-  getSearch (e, location, price) {
+  getSearch (e, location, price):Observable<any> {
     e.preventDefault()
     console.log('getSearch() called')
     console.log(location, price);

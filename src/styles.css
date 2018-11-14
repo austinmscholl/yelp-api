@@ -2,12 +2,21 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-    display: inline-block;
+    /* display: inline-block; */
     font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 button {
     border-radius: 3px;
     margin-top: 5px;
     width: 100px;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
 }

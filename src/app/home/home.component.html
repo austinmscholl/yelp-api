@@ -1,4 +1,4 @@
-<div style="text-align:center">
+<div>
   <form [formGroup]="yelpForm" (ngSubmit)="onSearchSubmit($event)">
     <p>Price Point
     <select formControlName="price">
@@ -12,14 +12,44 @@
     <button type="submit">Get Yelping</button>
   </form>
   <div *ngIf="searchResults">
-    <ul *ngFor="let result of searchResults.businesses">
+    <ul>
       <!-- <li> {{ result | json }}</li> -->
-      <li><a href="{{result.url}}" target="_blank">{{ result.name }}</a></li>
-      <li><img style="width:150px" src={{result.image_url}} /></li>
-      <li>{{ result.rating }} stars</li>
-      <li>{{ result.display_phone }}</li>
-      <li>{{ result.location.address1 }}, {{ result.location.city }}, {{ result.location.state }}</li>
+      <li><h3><a href="{{searchResults.url}}" target="_blank">{{ searchResults.name }}</a></h3></li>
+      <li><img alt="{{searchResults.name}}" style="width:400px; height:auto" src={{searchResults.image_url}} /></li>
+      <li>
+        <img *ngIf='searchResults.rating === 0' src='../../assets/large/large_0.png' />
+        <img *ngIf='searchResults.rating === 1' src='../../assets/large/large_1.png' />
+        <img *ngIf='searchResults.rating === 1.5' src='../../assets/large/large_1_half.png' />
+        <img *ngIf='searchResults.rating === 2' src='../../assets/large/large_2.png' />
+        <img *ngIf='searchResults.rating === 2.5' src='../../assets/large/large_2_half.png' />
+        <img *ngIf='searchResults.rating === 3' src='../../assets/large/large_3.png' />
+        <img *ngIf='searchResults.rating === 3.5' src='../../assets/large/large_3_half.png' />
+        <img *ngIf='searchResults.rating === 4' src='../../assets/large/large_4.png' />
+        <img *ngIf='searchResults.rating === 4.5' src='../../assets/large/large_4_half.png' />
+        <img *ngIf='searchResults.rating === 5' src='../../assets/large/large_5.png' />
+      </li>
+      <li>{{ searchResults.display_phone }}</li>
+      <li>{{ searchResults.location.address1 }}</li>
+      <li>{{ searchResults.location.city }}, {{ searchResults.location.state }} {{searchResults.location.zip_code }}</li>
+      <li *ngFor="let transaction of searchResults.transactions">
+        <p *ngIf="transaction === 'delivery'">Delivers!</p>
+      </li>
       <!-- <li>{{ result.transactions[0] }}</li> -->
     </ul>
   </div>
+  <!-- <div *ngIf="item"> -->
+      <!-- <ul *ngFor="let result of searchResults.businesses"> -->
+        <!-- <li> {{ result | json }}</li> -->
+        <!-- <ul> -->
+          <!-- <li>{{ item | json }}</li> -->
+        <!-- <li><h3><a href="{{result.url}}" target="_blank">{{ result.name }}</a></h3></li> -->
+        <!-- <li><img alt="{{result.name}}" style="width:300px" src={{result.image_url}} /></li> -->
+        <!-- <li>{{ result.rating }} stars</li>
+        <li>{{ result.display_phone }}</li>
+        <li>{{ result.location.address1 }}</li>
+        <li>{{ result.location.city }}, {{ result.location.state }} {{result.location.zip_code }}</li> -->
+        <!-- <li>{{ result.transactions[0] }}</li> -->
+      <!-- </ul> -->
+        <!-- </ul> -->
+    <!-- </div> -->
 </div>

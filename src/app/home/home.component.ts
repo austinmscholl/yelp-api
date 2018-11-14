@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
 
   yelpForm: FormGroup;
   searchResults: Object;
+  item: Object;
 
   constructor(private fb: FormBuilder, private searchService: SearchService) { }
 
@@ -22,21 +23,23 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  onSearchSubmit() {
+ async onSearchSubmit() {
     console.log(this.yelpForm.value.location)
     console.log(this.yelpForm.value.price)
     
-    this.searchService.getSearch(
+    await this.searchService.getSearch(
       event,
       this.yelpForm.value.location,
       this.yelpForm.value.price
       ).subscribe(
         data => {
           console.log(data)
-          this.searchResults = data
+          this.searchResults = data.businesses[Math.floor(Math.random() * 10)]
           console.log(this.searchResults)
+          // let item = this.searchResults.next()businesses[Math.floor(Math.random()*businesses.length)];
         }
       )
   }
+  
 
 }
