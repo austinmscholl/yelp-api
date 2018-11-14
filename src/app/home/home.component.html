@@ -14,11 +14,12 @@
   <div *ngIf="searchResults">
     <ul *ngFor="let result of searchResults.businesses">
       <!-- <li> {{ result | json }}</li> -->
-      <li>{{ result.name }}</li>
+      <li><a href="{{result.url}}" target="_blank">{{ result.name }}</a></li>
       <li><img style="width:150px" src={{result.image_url}} /></li>
       <li>{{ result.rating }} stars</li>
       <li>{{ result.display_phone }}</li>
       <li>{{ result.location.address1 }}, {{ result.location.city }}, {{ result.location.state }}</li>
+      <!-- <li>{{ result.transactions[0] }}</li> -->
     </ul>
   </div>
 </div>
