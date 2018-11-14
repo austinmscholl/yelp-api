@@ -8,7 +8,7 @@
       <option value="4">$$$$</option>
     </select></p>
     <label>Location:</label>
-    <input formControlName="location" type="search"><br />
+    <input formControlName="location" type="search" placeholder="City, State, Zip Code, etc."><br />
     <button type="submit">Get Yelping</button>
   </form>
   <div *ngIf="searchResults">
@@ -31,9 +31,9 @@
       <li>{{ searchResults.display_phone }}</li>
       <li>{{ searchResults.location.address1 }}</li>
       <li>{{ searchResults.location.city }}, {{ searchResults.location.state }} {{searchResults.location.zip_code }}</li>
-      <li *ngFor="let transaction of searchResults.transactions">
-        <p *ngIf="transaction === 'delivery'">Delivers!</p>
-      </li>
+      <ul *ngFor="let transaction of searchResults.transactions">
+        <li *ngIf="transaction === 'delivery'">Delivers!</li>
+      </ul>
       <!-- <li>{{ result.transactions[0] }}</li> -->
     </ul>
   </div>
