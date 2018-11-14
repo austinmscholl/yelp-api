@@ -32,10 +32,13 @@
       <li>{{ searchResults.location.address1 }}</li>
       <li>{{ searchResults.location.city }}, {{ searchResults.location.state }} {{searchResults.location.zip_code }}</li>
       <ul *ngFor="let transaction of searchResults.transactions">
-        <li *ngIf="transaction === 'delivery'">Delivers!</li>
+        <p *ngIf="transaction === 'delivery'">Delivers!</p>
+        <!-- <li *ngIf="transaction[0] !== 'delivery' || transactions[1] !== 'delivery' || transactions[2] !== 'delivery'">Does not delivery</li> -->
       </ul>
       <!-- <li>{{ result.transactions[0] }}</li> -->
+      <li>*</li>
     </ul>
+    <p>* does NOT deliver unless explicitly stated</p>
   </div>
   <!-- <div *ngIf="item"> -->
       <!-- <ul *ngFor="let result of searchResults.businesses"> -->
