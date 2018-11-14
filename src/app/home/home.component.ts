@@ -1,0 +1,42 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { SearchService } from '../search.service';
+
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+
+  yelpForm: FormGroup;
+  searchResults: Object;
+
+  constructor(private fb: FormBuilder, private searchService: SearchService) { }
+
+  ngOnInit() {
+    this.yelpForm = this.fb.group({
+      price: new FormControl(),
+      location: new FormControl()
+    })
+  }
+
+  onSearchSubmit() {
+    console.log(this.yelpForm.value.location)
+    console.log(this.yelpForm.value.price)
+    
+    this.searchService.getSearch(
+      event,
+      this.yelpForm.value.location,
+      this.yelpForm.value.price
+      ).subscribe(
+        data => {
+          console.log(data)
+          this.searchResults = data
+          console.log(this.searchResults)
+        }
+      )
+  }
+
+}
